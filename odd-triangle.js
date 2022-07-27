@@ -18,4 +18,4 @@ let sumOddRow = n => {
     } return sum
 }
 
-console.log(sumOddRow(12))
+console.log(sumOddRow(3))
