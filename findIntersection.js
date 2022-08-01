@@ -1,6 +1,7 @@
 let listA = [1,4,5,6];
 let listB = [2,3,4,5,6];
 let listBad = [10,22,34];
+let listOther = [2,3,4,6,7]
 
 const findIntersection = (arr1, arr2) => {
     for (let i = 0; i < arr1.length; i++){
@@ -17,3 +18,5 @@ console.log(findIntersection(listA, listB))
 
 console.log(findIntersection(listA, listBad))
 // -1
+
+console.log(findIntersection(listA, listOther))
