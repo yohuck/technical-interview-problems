@@ -1,43 +1,36 @@
 //initialize unsorted array
 let unsorted = [65,88,41,23,50,90,34,2,17,77]
 
-
 const quickSort = arr => {
+    // Stop condition for recursion
+    if (arr.length <= 1){
+        return arr
+    } 
+
+    // Find the pivot and initialize the lower & higher arrays
     let pivot = Math.floor(Math.random()*arr.length)
-    console.log(pivot)
-    const partition = (arr, pivot) => {
-        console.log(arr)
-        let higher = []
-        let lower = []
-        let temp = arr[(arr.length-1)]
-        arr[arr.length-1] = arr[pivot]
-        arr[pivot] = temp
-        console.log(arr)
+    let lower = []
+    let higher = []
+    // Swap the pivot with the last element
+    let temp = arr[pivot]
+    arr[pivot] = arr[(arr.length - 1)]
+    arr[(arr.length - 1)] = temp
+    // Loop through the array and add element to higher/lower
+    for (let i = 0; i < (arr.length - 1); i++ ){
+        arr[i] > arr[(arr.length - 1)] ? higher.push(arr[i]) : lower.push(arr[i])
+    }
 
-        let leftPointer = 0
-        let rightPointer = arr.length - 2
-        while (arr[leftPointer] < arr[arr.length-1]) {
-            leftPointer++
-        }
-        console.log(arr[leftPointer])
+    // Recursively sort the lower section
+    let bottom = quickSort(lower)
+    // Recursively sort the higher section
+    let top = quickSort(higher)
 
-        while (arr[rightPointer] > arr[arr.length-1]){
-            rightPointer--
-        }
-        console.log(arr[rightPointer])
+    // Add the pivot to the bottom
+    bottom.push(temp)
 
-        let tempy = arr[rightPointer]
-        arr[rightPointer] = arr[leftPointer]
-        arr[leftPointer] = tempy
+    // Concat wit the top and return
+    return bottom.concat(top)
 
-        console.log(arr)
-
-
-        }
-    
-    partition(arr, pivot)
-    return arr
 }
 
-
-console.log(quickSort(unsorted))
+console.log(quickSort(unsorted)) // [2, 17, 23, 34, 41, 50, 65, 77, 88, 90]
