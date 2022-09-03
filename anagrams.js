@@ -7,7 +7,7 @@ let returnArr = []
 const anagramKv= (word) => {
     let wordArr = word.split('')
     let wordArrKv = {}
-    let kv = wordArr.forEach(element => {
+    wordArr.forEach(element => {
         wordArrKv[element] ? wordArrKv[element]++ : wordArrKv[element] = 1;
     });
     return wordArrKv
