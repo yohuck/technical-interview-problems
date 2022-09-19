@@ -5,7 +5,6 @@ const topThreeWords = string => {
     const reg = /[^a-z']/
     let split = string.split(reg)
     
-    console.log(split)
     const fil = split.filter(a => a != '')
     split = fil
     let obj = {}
@@ -13,33 +12,20 @@ const topThreeWords = string => {
     for (let i = 0; i < split.length; i++){
         obj[split[i]] ? obj[split[i]]++ : obj[split[i]] = 1
     }
+  
+    let returnArr = []
+    let top = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
+    returnArr.push(top)
 
-    console.log(obj)
+    obj[top] = 0
+    let second = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
+    returnArr.push(second)
+    obj[second] = 0
 
-    let ab = 0
-    let bb = 0
-    let cb = 0
-    let xb
-    let yb
-    let zb
+    let third = Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
+    returnArr.push(third)
 
-    let arr = []
-
-    for (const wordyy in obj) {
-        console.log(wordyy)
-        let ret = {}
-        ret[wordyy] = obj[wordyy]
-        console.log(ret)
-        arr.push(ret)
-    }
-
-    console.log(arr)
-    
-    for (let i = 0; i < arr.length; i++){
-        if (arr[i])
-    }
-
-    return [xb,yb,zb]
+    return returnArr
 }
 
 console.log(topThreeWords(test))
